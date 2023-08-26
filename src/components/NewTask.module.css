@@ -1,3 +1,12 @@
+.create_task {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin: -27px 64px 0 0;
+}
+
 button {
   background-color: var(--blue-dark);
   border-style: none;
@@ -28,14 +37,4 @@ input {
 
 input:focus {
   color: var(--gray-100);
-}
-
-.create_task {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  width: 10%;
-  margin: -27px 64px 50% 50%;
 }

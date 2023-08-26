@@ -10,7 +10,10 @@ export function App() {
   return (
     <>
       <Header />
-      <NewTask />
+      <div className={styles.wrapper}>
+        <NewTask />
+        <TasksList />
+      </div>
     </>
   );
 }
