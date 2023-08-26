@@ -1,0 +1,19 @@
+.container_tasks {
+  display: block;
+  text-align: center;
+  border-style: solid;
+  border-width: 1px 0 0 0;
+  border-color: var(--gray-400);
+  border-radius: 0.5rem;
+  padding: 1.5rem 4rem;
+  margin-top: 1.5rem;
+}
+
+h4,
+p {
+  color: var(--gray-300);
+}
+
+img {
+  margin-bottom: 1rem;
+}
