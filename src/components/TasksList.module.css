@@ -17,3 +17,25 @@ p {
 img {
   margin-bottom: 1rem;
 }
+
+span {
+  background-color: var(--gray-400);
+  color: var(--gray-200);
+}
+
+.tasks_info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.tasks_created > p {
+  color: var(--blue);
+  font-weight: 700;
+}
+
+.tasks_done > p {
+  color: var(--purple);
+  font-weight: 700;
+}
