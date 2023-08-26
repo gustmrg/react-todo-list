@@ -1,3 +1,15 @@
+h4,
+p {
+  color: var(--gray-300);
+}
+
+span {
+  background-color: var(--gray-400);
+  color: var(--gray-200);
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.5rem;
+}
+
 .tasks {
   display: flex;
   width: 46rem;
@@ -11,6 +23,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: none;
+  padding: 1.5rem 4rem;
+  margin-top: 1.5rem;
+  gap: 1rem;
+}
+
+.tasks_list__empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border-style: solid;
   border-width: 1px 0 0 0;
   border-color: var(--gray-400);
@@ -19,18 +42,6 @@
   margin-top: 1.5rem;
   gap: 1rem;
   align-self: stretch;
-}
-
-h4,
-p {
-  color: var(--gray-300);
-}
-
-span {
-  background-color: var(--gray-400);
-  color: var(--gray-200);
-  padding: 0.125rem 0.5rem;
-  border-radius: 0.5rem;
 }
 
 .tasks_info {
