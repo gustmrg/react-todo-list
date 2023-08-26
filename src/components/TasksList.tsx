@@ -1,10 +1,29 @@
-import { Task } from "./Task";
+import { Task, TaskProps } from "./Task";
 
 import styles from "./TasksList.module.css";
 import clipboardImage from "../assets/Clipboard.png";
 
 export function TasksList() {
-  const tasksList: string[] = ["Task 1", "Task 2"];
+  const tasksList: TaskProps[] = [
+    {
+      id: "sdfsadfd",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, ea?",
+      isComplete: false,
+    },
+    {
+      id: "sdfsadf123d",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, ea?",
+      isComplete: false,
+    },
+    {
+      id: "sdfsadfasdasdsdd",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, ea?",
+      isComplete: true,
+    },
+  ];
 
   if (tasksList.length == 0) {
     return (
@@ -46,7 +65,16 @@ export function TasksList() {
           </div>
         </div>
         <div className={styles.tasks_list}>
-          <Task />
+          {tasksList.map((task) => {
+            return (
+              <Task
+                key={task.id}
+                id={task.id}
+                description={task.description}
+                isComplete={task.isComplete}
+              />
+            );
+          })}
         </div>
       </div>
     );

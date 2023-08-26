@@ -2,13 +2,13 @@ import { Trash } from "@phosphor-icons/react";
 
 import styles from "./Task.module.css";
 
-interface Task {
+export interface TaskProps {
   id: string;
   description: string;
   isComplete: boolean;
 }
 
-export function Task(task: Task) {
+export function Task(task: TaskProps) {
   return (
     <div className={styles.task}>
       <input type="checkbox" />
