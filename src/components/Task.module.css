@@ -34,3 +34,23 @@
   color: var(--danger);
   cursor: pointer;
 }
+
+.custom_checkbox input {
+  display: none;
+}
+
+.custom_checkbox input + label:before {
+  content: "";
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0.25rem;
+  background-color: white;
+  border: 1px solid red;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.25rem;
+}
+
+.custom_checkbox input:checked + label:before {
+  background-color: red;
+}

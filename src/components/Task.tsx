@@ -8,15 +8,15 @@ export interface TaskProps {
   isComplete: boolean;
 }
 
-export function Task({ title, isComplete }: TaskProps) {
+export function Task({ id, title, isComplete }: TaskProps) {
   function handleDeleteTask() {
     console.log("Tarefa apagada!");
   }
 
   return (
     <div className={styles.task}>
-      <div>
-        <input type="checkbox" />
+      <div className={styles.custom_checkbox}>
+        <input id={id} type="checkbox" />
         <label></label>
       </div>
       <p
@@ -26,6 +26,7 @@ export function Task({ title, isComplete }: TaskProps) {
       >
         {title}
       </p>
+
       <button title="Apagar tarefa" onClick={handleDeleteTask}>
         <Trash size={18} className={styles.icon} />
       </button>
