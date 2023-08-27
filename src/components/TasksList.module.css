@@ -27,7 +27,7 @@ span {
   width: 46rem;
 }
 
-button {
+.create_task > button {
   background-color: var(--blue-dark);
   border-style: none;
   color: var(--gray-100);
@@ -42,13 +42,13 @@ button {
   justify-content: center;
 }
 
-button:hover {
+.create_task > button:hover {
   background-color: var(--blue);
   cursor: pointer;
   transition: color 0.1s, background-color 0.1s;
 }
 
-button:disabled {
+.create_task > button:disabled {
   filter: brightness(0.7);
   cursor: not-allowed;
 }

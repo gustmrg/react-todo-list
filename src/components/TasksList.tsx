@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, ChangeEvent, FormEvent } from "react";
 import { EmptyList } from "./EmptyList";
 import { Task, TaskProps } from "./Task";
 import { v4 as uuidv4 } from "uuid";
@@ -8,28 +8,37 @@ import styles from "./TasksList.module.css";
 
 export function TasksList() {
   const [tasks, setTasks] = useState<TaskProps[]>([]);
+  const [newTaskTitle, setNewTaskTitle] = useState("");
   const [createdTasks, setCreatedTasks] = useState(0);
   const [completedTasks, setCompletedTasks] = useState(0);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleNewTask = () => {
+  function handleCreateNewTask(event: FormEvent<HTMLFormElement>) {
     event?.preventDefault();
-    var newTask = {
-      id: uuidv4(),
-      title: "Lorem ipsum dolor sit amet.",
-      isComplete: false,
-    };
-    console.log("Tarefa criada!");
-    var newTasks = [...tasks, newTask];
-    setTasks(newTasks);
-    setCreatedTasks(createdTasks + 1);
-  };
+    console.log(newTaskTitle);
 
-  //setCreatedTasks(1);
+    setTasks([
+      ...tasks,
+      { id: uuidv4(), title: newTaskTitle, isComplete: false },
+    ]);
+
+    setCreatedTasks(createdTasks + 1);
+  }
+
+  function handleNewTaskInputChange(event: ChangeEvent<HTMLInputElement>) {
+    setNewTaskTitle(event?.target.value);
+  }
 
   return (
     <div className={styles.wrapper}>
-      <form className={styles.create_task} onSubmit={handleNewTask}>
-        <input type="text" placeholder="Adicione uma nova tarefa" />
+      <form className={styles.create_task} onSubmit={handleCreateNewTask}>
+        <input
+          type="text"
+          placeholder="Adicione uma nova tarefa"
+          ref={inputRef}
+          value={newTaskTitle}
+          onChange={handleNewTaskInputChange}
+        />
         <button type="submit">
           Criar <PlusCircle size={16} />
         </button>

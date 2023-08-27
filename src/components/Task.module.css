@@ -24,11 +24,13 @@
   text-decoration: line-through;
 }
 
-.icon {
+.task button {
+  background: transparent;
+  border: 0;
   color: var(--gray-300);
 }
 
-.icon:hover {
+.task button:hover {
   color: var(--danger);
   cursor: pointer;
 }

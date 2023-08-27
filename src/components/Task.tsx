@@ -9,6 +9,10 @@ export interface TaskProps {
 }
 
 export function Task({ title, isComplete }: TaskProps) {
+  function handleDeleteTask() {
+    console.log("Tarefa apagada!");
+  }
+
   return (
     <div className={styles.task}>
       <div>
@@ -22,7 +26,9 @@ export function Task({ title, isComplete }: TaskProps) {
       >
         {title}
       </p>
-      <Trash size={18} className={styles.icon} />
+      <button title="Apagar tarefa" onClick={handleDeleteTask}>
+        <Trash size={18} className={styles.icon} />
+      </button>
     </div>
   );
 }
