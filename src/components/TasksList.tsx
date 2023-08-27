@@ -1,8 +1,8 @@
 import { useState, useRef, ChangeEvent, FormEvent } from "react";
+import { PlusCircle } from "@phosphor-icons/react";
+import { v4 as uuidv4 } from "uuid";
 import { EmptyList } from "./EmptyList";
 import { Task, TaskProps } from "./Task";
-import { v4 as uuidv4 } from "uuid";
-import { PlusCircle } from "@phosphor-icons/react";
 
 import styles from "./TasksList.module.css";
 
@@ -22,12 +22,15 @@ export function TasksList() {
       { id: uuidv4(), title: newTaskTitle, isComplete: false },
     ]);
 
+    setNewTaskTitle("");
     setCreatedTasks(createdTasks + 1);
   }
 
   function handleNewTaskInputChange(event: ChangeEvent<HTMLInputElement>) {
     setNewTaskTitle(event?.target.value);
   }
+
+  function deleteTask() {}
 
   return (
     <div className={styles.wrapper}>
@@ -39,7 +42,7 @@ export function TasksList() {
           value={newTaskTitle}
           onChange={handleNewTaskInputChange}
         />
-        <button type="submit">
+        <button type="submit" disabled={newTaskTitle.trim() === ""}>
           Criar <PlusCircle size={16} />
         </button>
       </form>
