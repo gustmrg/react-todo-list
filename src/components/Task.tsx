@@ -6,30 +6,39 @@ export interface TaskProps {
   id: string;
   title: string;
   isComplete: boolean;
+  onDelete: (task: TaskProps) => void;
+  onComplete: (task: TaskProps) => void;
 }
 
-export function Task({ id, title, isComplete }: TaskProps) {
+export function Task({
+  id,
+  title,
+  isComplete,
+  onDelete,
+  onComplete,
+}: TaskProps) {
   function handleDeleteTask() {
-    console.log("Tarefa apagada!");
+    onDelete({ id, title, isComplete, onDelete, onComplete });
+  }
+
+  function handleCompleteTask() {
+    onComplete({ id, title, isComplete, onDelete, onComplete });
   }
 
   return (
     <div className={styles.task}>
-      <div className={styles.custom_checkbox}>
-        <input id={id} type="checkbox" />
-        <label></label>
+      <div className={styles.custom_checkbox} onClick={handleCompleteTask}>
+        <input id={id} type="checkbox" checked={isComplete} />
+        <label htmlFor={id}></label>
       </div>
-      <p
-        className={
-          isComplete ? `${styles.title} ${styles.completed}` : styles.title
-        }
-      >
+      <p className={isComplete ? styles.completed : styles.incomplete}>
         {title}
       </p>
-
-      <button title="Apagar tarefa" onClick={handleDeleteTask}>
-        <Trash size={18} className={styles.icon} />
-      </button>
+      <div className={styles.delete_button}>
+        <button title="Apagar tarefa" onClick={handleDeleteTask}>
+          <Trash size={24} className={styles.icon} />
+        </button>
+      </div>
     </div>
   );
 }

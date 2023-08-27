@@ -19,7 +19,13 @@ export function TasksList() {
 
     setTasks([
       ...tasks,
-      { id: uuidv4(), title: newTaskTitle, isComplete: false },
+      {
+        id: uuidv4(),
+        title: newTaskTitle,
+        isComplete: false,
+        onDelete: deleteTask,
+        onComplete: completeTask,
+      },
     ]);
 
     setNewTaskTitle("");
@@ -30,7 +36,30 @@ export function TasksList() {
     setNewTaskTitle(event?.target.value);
   }
 
-  function deleteTask() {}
+  function deleteTask(task: TaskProps) {
+    setCreatedTasks(createdTasks - 1);
+    if (task.isComplete) {
+      setCompletedTasks(completedTasks - 1);
+    }
+    setTasks(tasks.filter((t) => t.id !== task.id));
+  }
+
+  function completeTask(task: TaskProps) {
+    event?.preventDefault();
+    setTasks(
+      tasks.map((t) => {
+        if (t.id === task.id) {
+          t.isComplete = !t.isComplete;
+          if (t.isComplete) {
+            setCompletedTasks(completedTasks + 1);
+          } else {
+            setCompletedTasks(completedTasks - 1);
+          }
+        }
+        return t;
+      })
+    );
+  }
 
   return (
     <div className={styles.wrapper}>
@@ -78,6 +107,8 @@ export function TasksList() {
                   id={task.id}
                   title={task.title}
                   isComplete={task.isComplete}
+                  onDelete={() => deleteTask(task)}
+                  onComplete={() => completeTask(task)}
                 />
               );
             })}
