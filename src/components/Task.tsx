@@ -4,25 +4,25 @@ import styles from "./Task.module.css";
 
 export interface TaskProps {
   id: string;
-  description: string;
+  title: string;
   isComplete: boolean;
 }
 
-export function Task(task: TaskProps) {
+export function Task({ title, isComplete }: TaskProps) {
   return (
     <div className={styles.task}>
-      <input type="checkbox" />
+      <div>
+        <input type="checkbox" />
+        <label></label>
+      </div>
       <p
         className={
-          task.isComplete ? styles.description_done : styles.description
+          isComplete ? `${styles.title} ${styles.completed}` : styles.title
         }
       >
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime eveniet
-        et cupiditate dolor accusantium, optio dolorum asperiores! Dolor
-        possimus explicabo sequi aliquam, nihil, in modi tempora cumque, iusto
-        reiciendis odio?
+        {title}
       </p>
-      <Trash size={48} className={styles.icon} />
+      <Trash size={18} className={styles.icon} />
     </div>
   );
 }

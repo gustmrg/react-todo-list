@@ -8,12 +8,12 @@ import "./global.css";
 
 export function App() {
   return (
-    <>
+    <main>
       <Header />
       <div className={styles.wrapper}>
         <NewTask />
         <TasksList />
       </div>
-    </>
+    </main>
   );
 }

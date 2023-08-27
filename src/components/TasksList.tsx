@@ -1,31 +1,32 @@
 import { Task, TaskProps } from "./Task";
+import { v4 as uuidv4 } from "uuid";
 
 import styles from "./TasksList.module.css";
 import clipboardImage from "../assets/Clipboard.png";
 
 export function TasksList() {
-  const tasksList: TaskProps[] = [
+  const tasks: TaskProps[] = [
     {
-      id: "sdfsadfd",
-      description:
+      id: uuidv4(),
+      title:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, ea?",
       isComplete: false,
     },
     {
-      id: "sdfsadf123d",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, ea?",
+      id: uuidv4(),
+      title:
+        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad mollitia, recusandae provident incidunt error praesentium aut, consectetur amet rem ut ipsam, tempora repellat. Eius, amet ut quasi harum eum ducimus?",
       isComplete: false,
     },
     {
-      id: "sdfsadfasdasdsdd",
-      description:
+      id: uuidv4(),
+      title:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, ea?",
       isComplete: true,
     },
   ];
 
-  if (tasksList.length == 0) {
+  if (tasks.length === 0) {
     return (
       <div className={styles.tasks}>
         <div className={styles.tasks_info}>
@@ -55,22 +56,22 @@ export function TasksList() {
         <div className={styles.tasks_info}>
           <div className={styles.tasks_created}>
             <p>
-              Tarefas criadas <span>0</span>
+              Tarefas criadas <span>3</span>
             </p>
           </div>
           <div className={styles.tasks_done}>
             <p>
-              Tarefas concluídas <span>0</span>
+              Tarefas concluídas <span>1 de 3</span>
             </p>
           </div>
         </div>
         <div className={styles.tasks_list}>
-          {tasksList.map((task) => {
+          {tasks.map((task) => {
             return (
               <Task
                 key={task.id}
                 id={task.id}
-                description={task.description}
+                title={task.title}
                 isComplete={task.isComplete}
               />
             );

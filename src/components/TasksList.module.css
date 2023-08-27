@@ -7,7 +7,7 @@ span {
   background-color: var(--gray-400);
   color: var(--gray-200);
   padding: 0.125rem 0.5rem;
-  border-radius: 0.5rem;
+  border-radius: 999px;
 }
 
 .tasks {
@@ -21,12 +21,10 @@ span {
 .tasks_list {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   border: none;
-  padding: 1.5rem 4rem;
   margin-top: 1.5rem;
   gap: 1rem;
+  width: 100%;
 }
 
 .tasks_list__empty {
