@@ -10,6 +10,62 @@ span {
   border-radius: 999px;
 }
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+}
+
+.create_task {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin: -27px;
+  width: 46rem;
+}
+
+button {
+  background-color: var(--blue-dark);
+  border-style: none;
+  color: var(--gray-100);
+  font-size: 0.875rem;
+  font-weight: bold;
+  line-height: 1.4;
+  padding: 1rem;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button:hover {
+  background-color: var(--blue);
+  cursor: pointer;
+  transition: color 0.1s, background-color 0.1s;
+}
+
+button:disabled {
+  filter: brightness(0.7);
+  cursor: not-allowed;
+}
+
+input {
+  background-color: var(--gray-500);
+  color: var(--gray-300);
+  border: 1px solid var(--gray-700);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  flex: 1;
+}
+
+input:focus {
+  color: var(--gray-100);
+}
+
 .tasks {
   display: flex;
   width: 46rem;

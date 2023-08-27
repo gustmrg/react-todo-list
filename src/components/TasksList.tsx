@@ -1,67 +1,90 @@
+import { useState } from "react";
+import { EmptyList } from "./EmptyList";
 import { Task, TaskProps } from "./Task";
 import { v4 as uuidv4 } from "uuid";
+import { PlusCircle } from "@phosphor-icons/react";
 
 import styles from "./TasksList.module.css";
-import clipboardImage from "../assets/Clipboard.png";
 
 export function TasksList() {
-  const tasks: TaskProps[] = [
-    {
-      id: uuidv4(),
-      title:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, ea?",
-      isComplete: false,
-    },
-    {
-      id: uuidv4(),
-      title:
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad mollitia, recusandae provident incidunt error praesentium aut, consectetur amet rem ut ipsam, tempora repellat. Eius, amet ut quasi harum eum ducimus?",
-      isComplete: false,
-    },
-    {
-      id: uuidv4(),
-      title:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, ea?",
-      isComplete: true,
-    },
-  ];
+  const [tasks, setTasks] = useState<TaskProps[]>([]);
+  const [createdTasks, setCreatedTasks] = useState(0);
+  const [completedTasks, setCompletedTasks] = useState(0);
 
-  if (tasks.length === 0) {
-    return (
-      <div className={styles.tasks}>
-        <div className={styles.tasks_info}>
-          <div className={styles.tasks_created}>
-            <p>
-              Tarefas criadas <span>0</span>
-            </p>
-          </div>
-          <div className={styles.tasks_done}>
-            <p>
-              Tarefas concluídas <span>0</span>
-            </p>
-          </div>
-        </div>
-        <div className={styles.tasks_list__empty}>
-          <img src={clipboardImage} alt="Imagem de uma prancheta" />
-          <div>
-            <h4>Você ainda não tem tarefas cadastradas</h4>
-            <p>Crie tarefas e organize seus itens a fazer</p>
-          </div>
-        </div>
+  const handleNewTask = () => {
+    var newTask = {
+      id: uuidv4(),
+      title: "Lorem ipsum dolor sit amet.",
+      isComplete: false,
+    };
+    console.log("Tarefa criada!");
+    var newTasks = [...tasks, newTask];
+    setTasks(newTasks);
+    setCreatedTasks(createdTasks + 1);
+  };
+
+  //setCreatedTasks(1);
+
+  return (
+    <div className={styles.wrapper}>
+      <div className={styles.create_task}>
+        <input type="text" placeholder="Adicione uma nova tarefa" />
+        <button onClick={handleNewTask}>
+          Criar <PlusCircle size={16} />
+        </button>
       </div>
-    );
-  } else {
+      <div className={styles.tasks}>
+        <div className={styles.tasks_info}>
+          <div className={styles.tasks_created}>
+            <p>
+              Tarefas criadas <span>{createdTasks}</span>
+            </p>
+          </div>
+          <div className={styles.tasks_done}>
+            {createdTasks === 0 ? (
+              <p>
+                Tarefas concluídas <span>{createdTasks}</span>
+              </p>
+            ) : (
+              <p>
+                Tarefas concluídas{" "}
+                <span>
+                  {completedTasks} de {createdTasks}
+                </span>
+              </p>
+            )}
+          </div>
+        </div>
+        {tasks.length === 0 ? (
+          <EmptyList />
+        ) : (
+          <Task
+            key={tasks[0].id}
+            id={tasks[0].id}
+            title={tasks[0].title}
+            isComplete={tasks[0].isComplete}
+          />
+        )}
+      </div>
+    </div>
+  );
+}
+
+/*else {
     return (
       <div className={styles.tasks}>
         <div className={styles.tasks_info}>
           <div className={styles.tasks_created}>
             <p>
-              Tarefas criadas <span>3</span>
+              Tarefas criadas <span>{createdTasks}</span>
             </p>
           </div>
           <div className={styles.tasks_done}>
             <p>
-              Tarefas concluídas <span>1 de 3</span>
+              Tarefas concluídas{" "}
+              <span>
+                {completedTasks} de {createdTasks}
+              </span>
             </p>
           </div>
         </div>
@@ -77,7 +100,4 @@ export function TasksList() {
             );
           })}
         </div>
-      </div>
-    );
-  }
-}
+      </div> */
