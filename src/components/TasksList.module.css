@@ -122,3 +122,19 @@ input:focus {
   color: var(--purple);
   font-weight: 700;
 }
+
+@media only screen and (max-width: 768px) {
+  .create_task {
+    width: auto;
+  }
+
+  .tasks {
+    width: auto;
+  }
+
+  .tasks_info {
+    width: auto;
+    justify-content: center;
+    gap: 1rem;
+  }
+}

@@ -39,7 +39,7 @@ O **to-do list** é um app feito em React de controle de tarefas desenvolvido no
 - Instale as dependências com `npm install`
 - Inicie o servidor com `npm run dev`
 
-Agora você pode acessar [`localhost:5173`](http://localhost:5173) do seu navegador.
+Agora você pode acessar [`localhost:5174`](http://localhost:5174) do seu navegador.
 
 ## 📄 Licença
 
